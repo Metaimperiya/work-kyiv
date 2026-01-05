@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WORK KYIV | Робота Київ</title>
+    <meta name="description" content="Work Kyiv — твій хаб, де знайти роботу в Києві стає простіше. Тільки актуальні вакансії Київ: від водія та адміністратора до офіс-менеджера. Робота Київ без досвіду, щоденна оплата та варіанти для студентів.">
+    <meta name="keywords" content="робота київ, вакансії київ, знайти роботу, робота в києві терміново, робота київ без досвіду">
+    <style>
+        body { background: #050505; color: #fff; font-family: sans-serif; text-align: center; margin: 0; }
+        .main-frame { min-height: 100vh; border: 8px solid #ffd700; box-sizing: border-box; padding: 20px; display: flex; flex-direction: column; align-items: center; }
+        h1 { color: #ffd700; font-size: 2.5rem; margin-bottom: 5px; }
+        .action-btn { display: block; width: 280px; padding: 15px; margin: 10px; background: #ffd700; color: #000; font-weight: bold; border-radius: 5px; cursor: pointer; border: none; font-size: 1rem; }
+        .comment-box { display: none; width: 100%; max-width: 600px; background: #fff; border-radius: 10px; padding: 10px; margin-top: 20px; color: #000; }
+        #live-clock { color: #ffd700; font-family: monospace; margin: 15px; font-size: 1.2rem; }
+        /* СТИЛЬ ДЛЯ ТВОИХ КЛЮЧЕВЫХ СЛОВ ВНИЗУ */
+        .seo-text { margin-top: auto; padding: 20px; font-size: 0.8rem; color: #444; text-align: center; }
+    </style>
+</head>
+<body>
+
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/uk_UA/sdk.js#xfbml=1&version=v18.0"></script>
+
+<div class="main-frame">
+    <h1>WORK KYIV</h1>
+    <div id="live-clock">Завантаження...</div>
+
+    <button class="action-btn" onclick="showTab('seekers')">🔍 ШУКАЮ РОБОТУ</button>
+    <button class="action-btn" style="background:none; border: 2px solid #ffd700; color:#ffd700;" onclick="showTab('employers')">💼 ПРОПОНУЮ РОБОТУ</button>
+
+    <div id="seekers" class="comment-box">
+        <h3>Шукають роботу (Київ):</h3>
+        <div class="fb-comments" data-href="https://work-kyiv.github.io/seekers" data-width="100%" data-numposts="10"></div>
+    </div>
+
+    <div id="employers" class="comment-box">
+        <h3>Пропозиції вакансій (Київ):</h3>
+        <div class="fb-comments" data-href="https://work-kyiv.github.io/jobs" data-width="100%" data-numposts="10"></div>
+    </div>
+
+    <div class="seo-text">
+        Ключові запити: робота київ вакансії київ знайти роботу київ робота в києві терміново робота київ без досвіду робота для студентів київ робота водій київ робота офіс київ робота адміністратор київ робота київ щоденна оплата шукаю роботу київ робота лівий берег київ робота правий берег київ вакансії від роботодавця київ робота київ віддалено робота курєр київ
+    </div>
+</div>
+
+<script>
+    function showTab(tabId) {
+        document.getElementById('seekers').style.display = 'none';
+        document.getElementById('employers').style.display = 'none';
+        document.getElementById(tabId).style.display = 'block';
+        if (typeof FB !== 'undefined') { FB.XFBML.parse(); }
+    }
+    setInterval(() => {
+        document.getElementById('live-clock').innerText = "KYIV: " + new Date().toLocaleTimeString('uk-UA', {timeZone:'Europe/Kyiv'});
+    }, 1000);
+</script>
+
+</body>
+</html>
