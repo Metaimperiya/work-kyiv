@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KYIV WORK | HUB</title>
+    <style>
+        body { background: #050505; color: #fff; font-family: 'Segoe UI', sans-serif; text-align: center; margin: 0; overflow-x: hidden; }
+        .main-frame { min-height: 100vh; display: flex; flex-direction: column; align-items: center; border: 10px solid #ffd700; box-sizing: border-box; padding: 20px; }
+        h1 { font-size: 3rem; color: #ffd700; text-shadow: 0 0 20px rgba(255,215,0,0.5); margin: 10px 0; }
+        .action-btn { display: inline-block; width: 250px; padding: 15px; margin: 10px; background: #ffd700; color: #000; text-decoration: none; font-weight: 900; border-radius: 50px; cursor: pointer; border: none; font-size: 1rem; transition: 0.3s; }
+        .action-btn:hover { transform: scale(1.05); box-shadow: 0 0 20px #ffd700; }
+        
+        /* Скрытые контейнеры для комментов */
+        .comment-box { display: none; width: 100%; max-width: 600px; background: #fff; border-radius: 15px; padding: 10px; margin-top: 20px; animation: slideIn 0.5s ease; }
+        @keyframes slideIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        
+        #live-clock { font-size: 1.2rem; margin: 20px 0; font-family: monospace; color: #ffd700; }
+        h2 { color: #000; margin: 5px 0; font-size: 1.2rem; }
+    </style>
+</head>
+<body>
+
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/uk_UA/sdk.js#xfbml=1&version=v18.0"></script>
+
+<div class="main-frame">
+    <h1>WORK KYIV</h1>
+    <div id="live-clock">--:--:--</div>
+    
+    <div class="nav-zone">
+        <button class="action-btn" onclick="showTab('seekers')">Я ШУКАЮ РОБОТУ</button>
+        <button class="action-btn" style="background:none; border: 2px solid #ffd700; color:#ffd700;" onclick="showTab('employers')">Я ДАЮ РОБОТУ</button>
+    </div>
+
+    <div id="seekers" class="comment-box">
+        <h2>🔍 ШУКАЮТЬ РОБОТУ:</h2>
+        <div class="fb-comments" data-href="https://work-kyiv.tiiny.site/seekers" data-width="100%" data-numposts="10"></div>
+    </div>
+
+    <div id="employers" class="comment-box">
+        <h2>💼 ПРОПОЗИЦІЇ ВАКАНСІЙ:</h2>
+        <div class="fb-comments" data-href="https://work-kyiv.tiiny.site/jobs" data-width="100%" data-numposts="10"></div>
+    </div>
+
+    <p style="font-size: 0.7rem; color: #444; margin-top: auto; padding-top: 20px;">SYSTEM STATUS: ACTIVE | CYBERLOGY PROTECTED</p>
+</div>
+
+<script>
+    function showTab(tabId) {
+        // Прячем все блоки
+        document.getElementById('seekers').style.display = 'none';
+        document.getElementById('employers').style.display = 'none';
+        
+        // Показываем нужный
+        const activeTab = document.getElementById(tabId);
+        activeTab.style.display = 'block';
+        
+        // Переинициализация FB чтобы комменты прогрузились в скрытом блоке
+        if (typeof FB !== 'undefined') {
+            FB.XFBML.parse();
+        }
+    }
+
+    function clock() {
+        const time = new Date().toLocaleTimeString('uk-UA', {timeZone:'Europe/Kyiv'});
+        document.getElementById('live-clock').innerText = "KYIV TIME: " + time;
+    }
+    setInterval(clock, 1000); clock();
+</script>
+
+</body>
+</html>
